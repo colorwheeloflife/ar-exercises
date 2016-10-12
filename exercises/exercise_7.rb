@@ -28,25 +28,13 @@ require_relative './exercise_6'
 puts "Exercise 7"
 puts "----------"
 
-class Store
-  validates_presence_of :name, length: {minimum: 3}
-  validates_numericality_of :annual_revenue => { > 0 }
-end
 
-class Employee
-  validates_presence_of :first_name
-  validates_presence_of :last_name
-  validates_numericality_of :hourly_rate
-  validates_inclusion_of :hourly_rate, in: 40..200
-  validates_presence_of :store_id
-end
-
-
+puts "Please enter a store name to create."
 user_store_choice = gets.chomp
 
 new_user_store = Store.create(name: user_store_choice)
 new_user_store.valid?
-new_user_store.errors.messages
+puts new_user_store.errors.messages
 
 
 
